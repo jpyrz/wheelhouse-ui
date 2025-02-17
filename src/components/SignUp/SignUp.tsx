@@ -67,8 +67,8 @@ const SignUp: React.FC = () => {
           style={{ maxWidth: "400px", width: "100vw" }}
         >
           <LogoHeader
-            logoWidth="300px"
-            logoHeight="75px"
+            logoWidth={300}
+            logoHeight={150}
             logoColor={theme.colors.blue[6]}
           />
           <Text size="xl" fw={700}>
