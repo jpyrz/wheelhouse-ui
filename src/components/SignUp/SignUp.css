@@ -1,0 +1,63 @@
+.sign-up-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.sign-up-container {
+  max-width: 400px;
+  width: 100%;
+  margin: 0;
+  padding: 20px;
+  border: 1px solid #414040;
+  border-radius: 12px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    background-color: var(--input-background-color);
+    border: 1px solid var(--input-border-color);
+    color: var(--text-color);
+
+    &:focus {
+      outline: none; /* Remove the default focus outline */
+      border-color: var(
+        --button-hover-background-color
+      ); /* Customize the border color on focus */
+    }
+  }
+
+  form div {
+    margin-bottom: 15px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--button-background-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--button-hover-background-color);
+    }
+  }
+}
