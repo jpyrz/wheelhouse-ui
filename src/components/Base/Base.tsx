@@ -15,8 +15,8 @@ export function Base() {
         location.pathname === "/login" || location.pathname === "/signup";
 
       if (user && isAuthRoute) {
-        // Redirect to /decks ONLY if they are logged in AND on an auth route
-        navigate("/decks", { replace: true });
+        // Redirect to /feed ONLY if they are logged in AND on an auth route
+        navigate("/feed", { replace: true });
       } else if (!user && !isAuthRoute) {
         // Redirect to /login ONLY if they are logged out AND on a protected route
         navigate("/login", { replace: true });

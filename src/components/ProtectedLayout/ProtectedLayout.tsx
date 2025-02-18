@@ -11,8 +11,8 @@ import { IconSun, IconMoon } from "@tabler/icons-react";
 import { NavBar } from "../NavBar/NavBar";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Account from "../Account/Account";
-import Decks from "../Decks/Decks";
-import Play from "../Play/Play";
+import Feed from "../Feed/Feed";
+import Topics from "../Topics/Topics";
 
 export function ProtectedLayout() {
   const [opened, { toggle }] = useDisclosure();
@@ -31,7 +31,7 @@ export function ProtectedLayout() {
       <AppShell.Header p="sm">
         <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
         <Flex justify="space-between">
-          <div>Playmat</div>
+          <div>Wheelhouse</div>
           <Group>
             <Button
               onClick={() =>
@@ -50,10 +50,10 @@ export function ProtectedLayout() {
 
       <AppShell.Main>
         <Routes>
-          <Route path="/play" element={<Play />} />
-          <Route path="/decks" element={<Decks />} />
+          <Route path="/topics" element={<Topics />} />
+          <Route path="/feed" element={<Feed />} />
           <Route path="/account" element={<Account />} />
-          <Route path="/" element={<Navigate to="/play" />} />
+          <Route path="/" element={<Navigate to="/topics" />} />
         </Routes>
       </AppShell.Main>
     </AppShell>

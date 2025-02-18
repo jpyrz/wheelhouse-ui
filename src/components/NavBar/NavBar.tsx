@@ -1,8 +1,8 @@
 import {
   IconHome2,
   IconLogout2,
-  IconPlayCardStarFilled,
-  IconPlayerPlayFilled,
+  IconArticle,
+  IconHash,
   IconUserCircle,
 } from "@tabler/icons-react";
 import { Flex, Stack, Tooltip, UnstyledButton, Text } from "@mantine/core";
@@ -37,8 +37,8 @@ function NavbarLink({ icon: Icon, label, to, size }: NavbarLinkProps) {
 }
 
 const navItems = [
-  { icon: IconPlayerPlayFilled, label: "Play", to: "/play" },
-  { icon: IconPlayCardStarFilled, label: "Decks", to: "/decks" },
+  { icon: IconArticle, label: "Feed", to: "/feed" },
+  { icon: IconHash, label: "Topics", to: "/topics" },
 ];
 
 export function NavBar() {
