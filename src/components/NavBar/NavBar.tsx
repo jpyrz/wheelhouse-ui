@@ -1,79 +1,86 @@
 import {
-  IconHome2,
   IconLogout2,
   IconArticle,
   IconHash,
   IconUserCircle,
+  IconMessage,
 } from "@tabler/icons-react";
-import { Flex, Stack, Tooltip, UnstyledButton, Text } from "@mantine/core";
+import { Flex, Stack, UnstyledButton, Text, Divider } from "@mantine/core";
 import classes from "./NavBar.module.css";
-import { Link, useLocation } from "react-router-dom";
 import { useUserProfile } from "../../hooks/useUserProfile";
 import { logOut } from "../../firebaseUtils";
+import LogoHeader from "../Logo/LogoHeader";
+import { NavBarItem } from "./NavBarItem";
+import { UserCard } from "../Library/UserCard/UserCard";
 
-interface NavbarLinkProps {
-  icon: typeof IconHome2;
-  label: string;
-  to: string;
-  size?: number;
-}
-
-function NavbarLink({ icon: Icon, label, to, size }: NavbarLinkProps) {
-  const location = useLocation();
-  const isActive = location.pathname === to;
-
-  return (
-    <Tooltip label={label} position="right" transitionProps={{ duration: 500 }}>
-      <UnstyledButton
-        component={Link}
-        to={to}
-        className={classes.link}
-        data-active={isActive || undefined}
-      >
-        <Icon size={size ?? 28} stroke={1.5} />
-      </UnstyledButton>
-    </Tooltip>
-  );
-}
-
+// Temporary mock data for demo purposes
 const navItems = [
-  { icon: IconArticle, label: "Feed", to: "/feed" },
-  { icon: IconHash, label: "Topics", to: "/topics" },
+  {
+    icon: IconArticle,
+    label: "Feed",
+    to: "/feed",
+  },
+  {
+    icon: IconHash,
+    label: "Topics",
+    to: "/topics",
+    children: [
+      { label: "design-system", to: "/topics/design-system" },
+      { label: "web-dev-tutorials", to: "/topics/web-dev-tutorials" },
+      { label: "backend-services", to: "/topics/backend-services" },
+      { label: "mobile-app", to: "/topics/mobile-app" },
+      { label: "api-development", to: "/topics/api-development" },
+      { label: "devops", to: "/topics/devops" },
+      { label: "machine-learning", to: "/topics/machine-learning" },
+      { label: "data-analytics", to: "/topics/data-analytics" },
+      { label: "customer-portal", to: "/topics/customer-portal" },
+      { label: "internal-tools", to: "/topics/internal-tools" },
+      { label: "marketing-website", to: "/topics/marketing-website" },
+      { label: "e-commerce-platform", to: "/topics/e-commerce-platform" },
+      { label: "user-research", to: "/topics/user-research" },
+      { label: "security", to: "/topics/security" },
+      {
+        label: "performance-optimization",
+        to: "/topics/performance-optimization",
+      },
+      { label: "cloud-infrastructure", to: "/topics/cloud-infrastructure" },
+      { label: "content-management", to: "/topics/content-management" },
+      { label: "customer-support", to: "/topics/customer-support" },
+      { label: "sales-tools", to: "/topics/sales-tools" },
+      { label: "hr-systems", to: "/topics/hr-systems" },
+    ],
+  },
+  {
+    icon: IconMessage,
+    label: "Messages",
+    to: "/messages",
+    children: [
+      { label: "Casey Boatman", to: "/messages/casey-boatman" },
+      { label: "Dorothy Young", to: "/messages/dorothy-young" },
+      { label: "Lena Holland", to: "/messages/lena-holland" },
+      { label: "Marianne Smith", to: "/messages/marianne-smith" },
+      { label: "Ruthie Mccoy", to: "/messages/ruthie-mccoy" },
+    ],
+  },
 ];
 
 export function NavBar() {
-  const { data: userProfile } = useUserProfile();
-
   return (
-    <Flex
-      direction="column"
-      justify="space-between"
-      align="center"
-      style={{ height: "100%" }}
-    >
-      <Stack justify="center" gap={8}>
+    <Flex direction="column" justify="space-between" className={classes.navbar}>
+      <Stack justify="center" gap={8} className={classes.linkStack}>
+        {/* Logo header */}
+        <LogoHeader logoWidth={130} logoHeight={60} className={classes.logo} />
+
+        {/* Navigation items */}
         {navItems.map((link) => (
-          <NavbarLink {...link} key={link.label} />
+          <NavBarItem {...link} key={link.label} />
         ))}
       </Stack>
 
-      <Stack justify="center" gap={0}>
-        <NavbarLink
-          icon={IconUserCircle}
-          label="Account"
-          to="/account"
-          size={36}
-        />
-        <Text size="xs" ta="center">
-          {userProfile?.displayName}
-        </Text>
-        <UnstyledButton
-          className={`${classes.link} ${classes.logoutBtn}`}
-          onClick={logOut}
-        >
-          <IconLogout2 size={32} stroke={1.5} />
-        </UnstyledButton>
-      </Stack>
+      <div className={classes.navbarFooter}>
+        <Divider size="xs" />
+        <UserCard />
+      </div>
     </Flex>
   );
 }

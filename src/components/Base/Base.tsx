@@ -1,8 +1,8 @@
 import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useAuth } from "../../AuthContext";
-import { ProtectedLayout } from "../ProtectedLayout/ProtectedLayout";
 import PublicLayout from "../PublicLayout/PublicLayout";
+import ProtectedLayoutV2 from "../ProtectedLayout/ProtectedLayoutV2";
 
 export function Base() {
   const { user, loading } = useAuth();
@@ -29,7 +29,7 @@ export function Base() {
   return (
     <Routes>
       {user ? (
-        <Route path="/*" element={<ProtectedLayout />} />
+        <Route path="/*" element={<ProtectedLayoutV2 />} />
       ) : (
         <Route path="/*" element={<PublicLayout />} />
       )}

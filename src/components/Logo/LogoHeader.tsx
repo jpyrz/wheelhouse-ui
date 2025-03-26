@@ -7,18 +7,24 @@ interface LogoHeaderProps {
   logoWidth?: number;
   logoHeight?: number;
   logoColor?: string;
+  className?: string;
 }
 
 const LogoHeader: React.FC<LogoHeaderProps> = ({
   logoWidth = 300,
   logoHeight = 200,
   logoColor,
+  className,
 }) => {
   const theme = useMantineTheme();
   const color = logoColor || theme.colors.blue[6];
 
   return (
-    <Flex className={styles.logoContainer} direction="column" gap="xs">
+    <Flex
+      className={`${styles.logoContainer} ${className || ""}`}
+      direction="column"
+      gap="xs"
+    >
       <Logo
         width={logoWidth}
         height={logoHeight}

@@ -1,0 +1,28 @@
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  position: relative;
+  width: 250px;
+  background-color: transparent;
+}
+
+.mainContent {
+  flex: 1;
+}
+
+.resizer {
+  position: absolute;
+  right: -3px;
+  top: 0;
+  height: 100%;
+  width: 6px;
+  cursor: col-resize;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.resizer:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}

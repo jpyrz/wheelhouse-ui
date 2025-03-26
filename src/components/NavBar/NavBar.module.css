@@ -1,28 +1,20 @@
-.link {
-  width: 50px;
-  height: 50px;
-  border-radius: var(--mantine-radius-md);
+.navbar {
+  padding: 20px;
+  height: 100%;
+}
+
+.logo {
+  padding-bottom: 16px;
+}
+
+.linkStack {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
+  flex-direction: column;
+}
 
-  &:hover {
-    background-color: light-dark(
-      var(--mantine-color-gray-0),
-      var(--mantine-color-dark-5)
-    );
-  }
-
-  &[data-active] {
-    &,
-    &:hover {
-      background-color: var(--mantine-color-blue-light);
-      color: var(--mantine-color-blue-light-color);
-    }
-  }
-
-  &.logoutBtn {
-    padding-right: 12px;
-  }
+.navbarFooter {
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
